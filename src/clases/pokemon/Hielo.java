@@ -33,14 +33,14 @@ public class Hielo extends Pokemon {
     	this.setVida(this.getVida()+200);
 	}
     
-	public void hechizoNiebla() {
+	public void hechizadoNiebla() {
     	this.setVida(this.getVida()*4/10);
 	}
-	public void hechizoViento() {
+	public void hechizadoViento() {
     	this.setAtaque(this.getAtaque()*8/10);
     	this.setVida(this.getVida()*8/10);
 	}
-	public void hechizoTormenta() {
+	public void hechizadoTormenta() {
     	this.setEscudo(this.getEscudo()*0.2);
 	}
     

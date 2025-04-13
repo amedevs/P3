@@ -40,13 +40,13 @@ public class Fuego extends Pokemon {
     	this.setVida(vidaPD*(80 + 5*this.getCategoria())/100);
 	}
     
-	public void hechizoNiebla() {
+	public void hechizadoNiebla() {
     	this.setAtaque(this.getAtaque()/2);
 	}
-	public void hechizoViento() {
+	public void hechizadoViento() {
     	this.setVida(this.getVida()/2);
 	}
-	public void hechizoTormenta() {
+	public void hechizadoTormenta() {
     	this.setEscudo(this.getEscudo()*0.8);
     	this.setAtaque(this.getAtaque()*0.8);
 	}

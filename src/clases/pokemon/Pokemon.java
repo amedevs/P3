@@ -1,11 +1,12 @@
 package clases.pokemon;
 
-import interfaces.Hostil;
-import interfaces.Valuable;
 import interfaces.Clasificable;
 import interfaces.Clonable;
+import interfaces.Hostil;
+import interfaces.Valuable;
+import interfaces.Hechizable;
 
-public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonable {
+public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonable, Hechizable {
 	private String nombre;
 	private double escudo,
               	ataque,
@@ -25,11 +26,8 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonabl
 	public int getCategoria() {
     	return xp;
 	}
-    
+	
 	// Métodos -----------------------------------------------------------------
-	public abstract void hechizoNiebla();
-	public abstract void hechizoViento();
-	public abstract void hechizoTormenta();
 	public abstract void recibeDano(double dano);
 	public abstract void recargar();
 	

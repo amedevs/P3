@@ -1,6 +1,6 @@
 package interfaces;
 
 public interface Valuable {
-	public double getCosto();
+	double getCosto();
 }
 

@@ -52,13 +52,13 @@ public class Piedra extends Pokemon {
         	this.setVida(2*vidaPD);
 	}
     
-	public void hechizoNiebla() {
+	public void hechizadoNiebla() {
     	this.setAtaque(this.getAtaque()*4/10);
 	}
-	public void hechizoViento() {
+	public void hechizadoViento() {
     	this.setVida(this.getVida()/4);
 	}
-	public void hechizoTormenta() {
+	public void hechizadoTormenta() {
     	this.setEscudo(0);
     	this.setAtaque(this.getAtaque()*7/10);
 	}

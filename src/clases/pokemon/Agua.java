@@ -32,14 +32,14 @@ public class Agua extends Pokemon {
     	this.setVida(vidaPD);
 	}
     
-	public void hechizoNiebla() {
+	public void hechizadoNiebla() {
     	this.setVida(this.getVida()/2);
 	}
-	public void hechizoViento() {
+	public void hechizadoViento() {
  	   	this.setAtaque(this.getAtaque()*9/10);
  	   	this.setVida(this.getVida()*9/10);
 	}
-	public void hechizoTormenta() {
+	public void hechizadoTormenta() {
     		this.setEscudo(this.getEscudo()*0.1);
 	}
     
