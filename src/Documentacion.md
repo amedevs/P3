@@ -50,7 +50,11 @@ Documentacion Torneo Pokemon
                    Claro pero no es resposabilidad del duelo, es del entrenador, claro pero el tema es que ponganle que "muere" el pokemon, se deberia volver a guardar con vida 0, no deberia ser un clon. alguien mas quiere transmitir y me uno al salseo?
       
 
-     Enfrentamiento: Clase concreta. Define los metodos necesarios para una pelea: 
+     Enfrentamiento: Clase concreta. Define los metodos necesarios para una pelea (Controlado por un While): 
                      -preparaBatalla: establece los dos rivales (lanza excepcion en caso de no poderse, bien, 
                       añadimos exepciones)
-                     -dale
+                     -terminaBatalla: boolean que devuelve la condicion de vida de cada equipo LUEGO de cada ataque
+                     -Se definen dos variables pokemon y pokemonRival del tipo Pokemon, junto con los dos indices para los array de Batalla -> el while externo se 
+                      controla con terminaBatalla() y el interno se controla checkeando el nivel de vida de ambos pokemones en batalla, al salir de este 
+                      incrementa el indice del array del entrenador perdedor 
+                     -entregaPremio: se encarga de distribuir el premio entre el entrenador ganador y sus pokemones
