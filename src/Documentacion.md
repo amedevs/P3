@@ -27,3 +27,18 @@ Documentacion Torneo Pokemon
 
 
                               Definicion de Clases, metodos, subclases y patrones
+
+     POKEMON: clase abtracta. Esta define metodos comunes:
+                             -constructor: establece los atributos comunes (ya mencionados)
+                             -getCategoria: devuelve categoria
+                             -recibe dano y recargar: metodos abstractos redifinidos en cada subclase
+                             -getters y setter de los atributos
+
+     SUBCLASES DE POKEMONES: Tienen atributos que sirven de informacion (PD) y  metodos definidos en las intefaces 
+
+        - POKEMON de agua:
+        - POKEMON de fuego:
+        - POKEMON de hielo:
+        - POKEMON de piedra:
+   
+     Entrenadores:Clase concreta no?
