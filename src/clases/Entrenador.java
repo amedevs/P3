@@ -15,10 +15,10 @@ public class Entrenador implements Clonable {
 	
 	// "Heredaciones" -----------------------------------------------------
 	public boolean esClonable() {
-		boolean aux = false;
+		boolean aux = true;
 		int i = 0;
 		
-		while (!aux && i<this.pokemones.size()) {
+		while (aux && i<this.pokemones.size()) {
 			aux = this.pokemones.get(i).esClonable();
 			i++;
 		}
