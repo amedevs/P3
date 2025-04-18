@@ -24,6 +24,6 @@ public abstract class Arma implements Hostil, Valuable, Clonable {
     	return costo;
 	}
 
-	public Abstract boolean Clonable()
+	public Abstract boolean esClonable()
 
 }
