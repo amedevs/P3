@@ -6,6 +6,8 @@ import clases.pokemon.Pokemon;
 import interfaces.Clonable;
 
 public class Entrenador implements Clonable {
+	private final int maxCombatientes = 3;
+	
 	private String nombre;
 	private ArrayList<Pokemon> pokemones = new ArrayList<Pokemon>();
 	private ArrayList<Pokemon> pokemonesCombatientes = new ArrayList<Pokemon>();
@@ -30,6 +32,11 @@ public class Entrenador implements Clonable {
 	// Métodos -----------------------------------------------------
 	public void anadirPokemon(Pokemon pokemon) {
 		this.pokemones.add(pokemon);
+	}
+
+	public void anadirPokemonCombatiente(Pokemon pokemon) {
+		if (this.pokemonesCombatientes.size()<maxCombatientes)
+			this.pokemonesCombatientes.add(pokemon);
 	}
 	/*
 	public void retirarPokemonDerrotado() {
