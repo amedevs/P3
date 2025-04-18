@@ -24,7 +24,7 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonabl
     
 	// Interfaces -----------------------------------------------------------------
 	public int getCategoria() {
-    	return xp;
+    	    return xp;
 	}
 	
 	// Métodos -----------------------------------------------------------------
@@ -33,31 +33,31 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonabl
 	
 	// Getters y setters -----------------------------------------------------------------
 	public String getNombre() {
-    	return nombre;
+    	    return nombre;
 	}
 	public void setNombre(String nombre) {
-    	this.nombre = nombre;
+    	    this.nombre = nombre;
 	}
 
 	public double getEscudo() {
-    	return escudo;
+    	    return escudo;
 	}
 	public void setEscudo(double escudo) {
-    	this.escudo = escudo;
+    	    this.escudo = escudo;
 	}
 
 	public double getAtaque() {
-    	return ataque;
+    	    return ataque;
 	}
 	public void setAtaque(double ataque) {
-    	this.ataque = ataque;
+    	    this.ataque = ataque;
 	}
 
 	public double getVida() {
-    	return vida;
+    	    return vida;
 	}
 	public void setVida(double vida) {
-    	this.vida = vida;
+    	    this.vida = vida;
 	}
     
 }
