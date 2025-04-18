@@ -8,6 +8,7 @@ import interfaces.Clonable;
 public class Entrenador implements Clonable {
 	private String nombre;
 	private ArrayList<Pokemon> pokemones = new ArrayList<Pokemon>();
+	private ArrayList<Pokemon> pokemonesCombatientes = new ArrayList<Pokemon>();
 	
 	public Entrenador(String nombre) {
 		this.nombre = nombre;
