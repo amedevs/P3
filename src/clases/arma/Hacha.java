@@ -15,7 +15,7 @@ public class Hacha extends Arma {
     	adversario.recibeDano(this.getAtaque() + (maxAtaque-minAtaque)*Math.random());
 	}
 	
-	public boolean esClonable() {
-		return false;
+	public Object clone() throws CloneNotSupportedException {
+		return new CloneNotSupportedException("El acha no es clonable");
 	}
 }
