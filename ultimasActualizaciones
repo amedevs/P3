@@ -1,0 +1,3 @@
+- Pulí Duelo. Implementé que el Hechizo se elija por teclado. Añadí la suma de XP y la bonificación en créditos al entrenador ganador.
+- Agregué a Entrenador. Agregué que guarde cartas de hechizo en tres ArrayList distintos para un manejo más cómodo en el duelo - por limitación de Double Dispatch, no se podrían agregar más hechizos, así que no afecta. Agregué también un ArrayList de Arma - es su responsabilidad comprarlas, almacenarlas y asignarlas a pokemones Piedra.
+main
