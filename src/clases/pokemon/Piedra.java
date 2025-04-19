@@ -27,11 +27,10 @@ public class Piedra extends Pokemon {
 	}
 	
 	public void recibeDano(double dano) {
-    	double cuartoDeDano = dano/4;
-   	 
     	if (this.getEscudo()>0) {
-        	this.setEscudo(this.getEscudo()-3*cuartoDeDano);
-        	this.setVida(this.getVida()-cuartoDeDano);
+    		dano = (double)dano/4;
+        	this.setEscudo(this.getEscudo()-3*dano);
+        	this.setVida(this.getVida()-dano);
         	if (this.getEscudo()<0) {
             	this.setVida(this.getVida()+this.getEscudo());
             	this.setEscudo(0);
@@ -68,6 +67,6 @@ public class Piedra extends Pokemon {
 	}
 	
 	public boolean esClonable() {
-    	return this.arma.esClonable();
+    	return (this.arma != null) ? this.arma.esClonable() : false;
 	}
 }
