@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import clases.arma.Arma;
 import clases.hechizo.Hechizo;
+import clases.pokemon.Piedra;
 import clases.pokemon.Pokemon;
 import interfaces.Clasificable;
 import interfaces.Clonable;
@@ -65,6 +66,15 @@ public class Entrenador implements Clonable, Clasificable {
 			this.armas.add(arma);
 		} /*else
 			lanzar CompraImposibleException */
+	}
+	
+	public void asignarArma(Arma arma, Piedra piedra) {
+		piedra.setArma(arma);
+		this.armas.remove(arma);
+	}
+	public void desasignarArma(Piedra piedra) {
+		this.armas.add(piedra.getArma());
+		piedra.setArma(null);
 	}
 
 	public void anadirPokemonCombatiente(Pokemon pokemon) {

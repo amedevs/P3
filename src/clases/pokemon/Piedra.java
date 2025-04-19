@@ -66,6 +66,13 @@ public class Piedra extends Pokemon {
     	return costo;
 	}
 	
+	public Arma getArma() {
+		return this.arma;
+	}
+	public void setArma(Arma arma) {
+		this.arma = arma;
+	}
+	
 	public boolean esClonable() {
     	return (this.arma != null) ? this.arma.esClonable() : false;
 	}
