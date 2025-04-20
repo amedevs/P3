@@ -54,7 +54,8 @@ public class Fuego extends Pokemon {
     	return costo;
 	}
 	
-	public boolean esClonable() {
-    	return false;
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException("Los Pokemones tipo fuego no pueden clonarse");
 	}
 }
