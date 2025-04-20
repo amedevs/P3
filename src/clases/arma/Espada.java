@@ -11,8 +11,5 @@ public class Espada extends Arma {
 	public void atacar(Pokemon adversario) {
     	adversario.recibeDano(this.ataque);
 	}
-	
-	public boolean esClonable() {
-		return true;
-	}
+
 }
