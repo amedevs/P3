@@ -73,7 +73,10 @@ public class Piedra extends Pokemon {
 		this.arma = arma;
 	}
 	
-	public boolean esClonable() {
-    	return (this.arma != null) ? this.arma.esClonable() : false;
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Piedra clonPiedra = (Piedra)super.clone();
+		clonPiedra.arma = (Arma)arma.clone();
+		return clonPiedra;
 	}
 }
