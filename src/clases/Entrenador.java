@@ -7,9 +7,8 @@ import clases.hechizo.Hechizo;
 import clases.pokemon.Piedra;
 import clases.pokemon.Pokemon;
 import interfaces.Clasificable;
-import interfaces.Clonable;
 
-public class Entrenador implements Clonable, Clasificable {
+public class Entrenador implements Cloneable, Clasificable {
 	private final int maxCombatientes = 3;
 	
 	private String nombre;
@@ -19,6 +18,7 @@ public class Entrenador implements Clonable, Clasificable {
 	private ArrayList<Hechizo> hechizosTormenta = new ArrayList<Hechizo>();
 	private ArrayList<Hechizo> hechizosViento = new ArrayList<Hechizo>();
 	private ArrayList<Arma> armas = new ArrayList<Arma>();
+
 	private int creditos = 0;
 	
 	public Entrenador(String nombre) {
@@ -26,16 +26,39 @@ public class Entrenador implements Clonable, Clasificable {
 	}
 	
 	// "Heredaciones" -----------------------------------------------------
-	public boolean esClonable() {
-		boolean aux = true;
-		int i = 0;
+	public Object clone() throws CloneNotSupportedException {
+		Entrenador clonEntrenador = (Entrenador)super.clone();
 		
-		while (aux && i<this.pokemones.size()) {
-			aux = this.pokemones.get(i).esClonable();
-			i++;
+		// Clonar pokémones
+		
+		for(Pokemon pokemon : this.pokemones) {
+			clonEntrenador.pokemones.add((Pokemon)pokemon.clone());
 		}
 		
-		return aux;
+		// Clonar pokémones combatientes
+	
+		for(Pokemon pokemon : this.pokemonesCombatientes) {
+			clonEntrenador.pokemonesCombatientes.add((Pokemon)pokemon.clone());
+		}
+		
+		// Clonar hechizos
+		
+		for(Hechizo hechizo : this.hechizosNiebla) {
+			clonEntrenador.hechizosNiebla.add((Hechizo)hechizo.clone());
+		}
+		for(Hechizo hechizo : this.hechizosTormenta) {
+			clonEntrenador.hechizosTormenta.add((Hechizo)hechizo.clone());
+		}
+		for(Hechizo hechizo : this.hechizosViento) {
+			clonEntrenador.hechizosViento.add((Hechizo)hechizo.clone());
+		}
+		
+		// Clonar armas
+		for(Arma arma : this.armas) {
+			clonEntrenador.armas.add((Arma)arma.clone());
+		}
+		
+		return clonEntrenador;
 	}
 	
 	public int getCategoria() {
@@ -119,4 +142,6 @@ public class Entrenador implements Clonable, Clasificable {
 		this.creditos = nuevosCreditos;
 	}
 }
+
+
 
