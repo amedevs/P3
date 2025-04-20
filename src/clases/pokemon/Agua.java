@@ -47,8 +47,5 @@ public class Agua extends Pokemon {
     	return costo;
 	}
 	
-	public boolean esClonable() {
-    	return true;
-	}
 	
 }
