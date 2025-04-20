@@ -48,7 +48,5 @@ public class Hielo extends Pokemon {
     	return costo;
 	}
 	
-	public boolean esClonable() {
-    	return true;
-	}
+	
 }
