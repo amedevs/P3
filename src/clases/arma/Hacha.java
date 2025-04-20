@@ -14,8 +14,10 @@ public class Hacha extends Arma {
 	public void atacar(Pokemon adversario) {
     	adversario.recibeDano(this.getAtaque() + (maxAtaque-minAtaque)*Math.random());
 	}
-	
+
+	@Override
 	public Object clone() throws CloneNotSupportedException {
-		return new CloneNotSupportedException("El acha no es clonable");
+		throw new CloneNotSupportedException("Las hachas no pueden clonarse");
 	}
+
 }
