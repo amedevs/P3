@@ -1,12 +1,11 @@
 package clases.pokemon;
 
 import interfaces.Clasificable;
-import interfaces.Clonable;
 import interfaces.Hostil;
 import interfaces.Valuable;
 import interfaces.Hechizable;
 
-public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonable, Hechizable {
+public abstract class Pokemon implements Hostil, Valuable, Clasificable, Cloneable, Hechizable {
 	private String nombre;
 	private double escudo,
               	ataque,
@@ -61,6 +60,11 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Clonabl
 	}
 	public void setVida(double vida) {
     	this.vida = vida;
+	}
+
+	public Object clone() throws CloneNotSupportedException {
+        return (Pokemon)super.clone();
+	 }
 	}
 	
     
