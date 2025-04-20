@@ -2,9 +2,8 @@ package clases.arma;
 
 import interfaces.Hostil;
 import interfaces.Valuable;
-import interfaces.Clonable;
 
-public abstract class Arma implements Hostil, Valuable, Clonable {
+public abstract class Arma implements Hostil, Valuable, Cloneable {
 	double ataque,
       	costo;
     
@@ -24,4 +23,7 @@ public abstract class Arma implements Hostil, Valuable, Clonable {
     	return costo;
 	}
 
+    public Object clone() throws CloneNotSupportedException{
+		return (Arma)super.clone();
+	}
 }
