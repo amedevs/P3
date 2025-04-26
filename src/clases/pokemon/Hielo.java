@@ -32,6 +32,14 @@ public class Hielo extends Pokemon {
     	this.setAtaque(this.getAtaque()+100);
     	this.setVida(this.getVida()+200);
 	}
+
+	@override
+	public Object clone(){
+	 try
+	   return (Hielo)super.clone();
+	 catch 
+	    throw new AssertionError();	 
+	}
     
 	public void hechizadoNiebla() {
     	this.setVida(this.getVida()*4/10);
