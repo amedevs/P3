@@ -30,30 +30,41 @@ public class Entrenador implements Cloneable, Clasificable {
 		Entrenador clonEntrenador = (Entrenador)super.clone();
 		
 		// Clonar pokémones
-		
+		clonEntrenador.pokemones = (ArrayList<Pokemon>)pokemon.clone();
+		clonEntrenador.pokemones.clear();
 		for(Pokemon pokemon : this.pokemones) {
 			clonEntrenador.pokemones.add((Pokemon)pokemon.clone());
 		}
 		
 		// Clonar pokémones combatientes
-	
+	        clonEntrenador.pokemonesCombatientes = (ArrayList<Pokemon>)pokemonesCombatientes.clone();
+		clonEntrenador.pokemonesCombatientes.clear();
 		for(Pokemon pokemon : this.pokemonesCombatientes) {
 			clonEntrenador.pokemonesCombatientes.add((Pokemon)pokemon.clone());
 		}
 		
 		// Clonar hechizos
-		
+		clonEntrenador.hechizosNiebla = (ArrayList<Pokemon>)hechizosNiebla.clone();
+		clonEntrenador.hechizosNiebla.clear();
 		for(Hechizo hechizo : this.hechizosNiebla) {
 			clonEntrenador.hechizosNiebla.add((Hechizo)hechizo.clone());
 		}
+
+		clonEntrenador.hechizosTormenta = (ArrayList<Pokemon>)hechizosNiebla.clone();
+		clonEntrenador.hechizosTormenta.clear();
 		for(Hechizo hechizo : this.hechizosTormenta) {
-			clonEntrenador.hechizosTormenta.add((Hechizo)hechizo.clone());
+			clonEntrenador.hechizosTormenta.add((Hechizo)hechizosTormenta.clone());
 		}
+
+		clonEntrenador.hechizosViento = (ArrayList<Pokemon>)hechizosViento.clone();
+		clonEntrenador.hechizosViento.clear();
 		for(Hechizo hechizo : this.hechizosViento) {
 			clonEntrenador.hechizosViento.add((Hechizo)hechizo.clone());
 		}
 		
 		// Clonar armas
+		clonEntrenador.armas = (ArrayList<Pokemon>)armas.clone();
+		clonEntrenador.armas.clear();
 		for(Arma arma : this.armas) {
 			clonEntrenador.armas.add((Arma)arma.clone());
 		}
