@@ -42,6 +42,14 @@ public class Agua extends Pokemon {
 	public void hechizadoTormenta() {
     		this.setEscudo(this.getEscudo()*0.1);
 	}
+
+	@override
+	public Object clone(){
+	 try
+	   return (Agua)super.clone();
+	 catch 
+	    throw new AssertionError();	 
+	}
     
 	public double getCosto() {
     	return costo;
