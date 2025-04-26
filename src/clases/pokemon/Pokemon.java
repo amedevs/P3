@@ -62,8 +62,9 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Cloneab
     	this.vida = vida;
 	}
 
+	@override
 	public Object clone() throws CloneNotSupportedException {
-        return (Pokemon)super.clone();
+          return (Pokemon)super.clone();
 	 }
 	}
 	
