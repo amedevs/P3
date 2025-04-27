@@ -1,10 +1,17 @@
-package src;
+package clases;
 
-import clases.*;
-import clases.arma.*;
-import clases.hechizo.*;
-import clases.pokemon.*;
-import java.util.ArrayList;
+import clases.arma.Arma;
+import clases.arma.Espada;
+import clases.arma.Hacha;
+import clases.hechizo.Hechizo;
+import clases.hechizo.Niebla;
+import clases.hechizo.Tormenta;
+import clases.hechizo.Viento;
+import clases.pokemon.Agua;
+import clases.pokemon.Fuego;
+import clases.pokemon.Hielo;
+import clases.pokemon.Piedra;
+import clases.pokemon.Pokemon;
 
 public class Main {
     public static void main(String[] args) {

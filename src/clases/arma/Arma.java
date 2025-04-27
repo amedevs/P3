@@ -23,8 +23,8 @@ public abstract class Arma implements Hostil, Valuable, Cloneable {
     	return costo;
 	}
 
-	@override
-        public Object clone() throws CloneNotSupportedException{
+	@Override
+    public Object clone() throws CloneNotSupportedException{
 		return (Arma)super.clone();
 	}
 }

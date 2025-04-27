@@ -43,17 +43,17 @@ public class Agua extends Pokemon {
     		this.setEscudo(this.getEscudo()*0.1);
 	}
 
-	@override
+	@Override
 	public Object clone(){
-	 try
-	   return (Agua)super.clone();
-	 catch 
-	    throw new AssertionError();	 
+		Agua a = null;
+		
+		try {a = (Agua)super.clone();}
+		catch (CloneNotSupportedException e) {}
+		
+		return a;
 	}
     
 	public double getCosto() {
     	return costo;
 	}
-	
-	
 }

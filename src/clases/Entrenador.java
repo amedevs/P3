@@ -30,7 +30,7 @@ public class Entrenador implements Cloneable, Clasificable {
 		Entrenador clonEntrenador = (Entrenador)super.clone();
 		
 		// Clonar pokémones
-		clonEntrenador.pokemones = (ArrayList<Pokemon>)pokemon.clone();
+		clonEntrenador.pokemones = (ArrayList<Pokemon>)pokemones.clone();
 		clonEntrenador.pokemones.clear();
 		for(Pokemon pokemon : this.pokemones) {
 			clonEntrenador.pokemones.add((Pokemon)pokemon.clone());
@@ -44,26 +44,26 @@ public class Entrenador implements Cloneable, Clasificable {
 		}
 		
 		// Clonar hechizos
-		clonEntrenador.hechizosNiebla = (ArrayList<Pokemon>)hechizosNiebla.clone();
+		clonEntrenador.hechizosNiebla = (ArrayList<Hechizo>)hechizosNiebla.clone();
 		clonEntrenador.hechizosNiebla.clear();
 		for(Hechizo hechizo : this.hechizosNiebla) {
 			clonEntrenador.hechizosNiebla.add((Hechizo)hechizo.clone());
 		}
 
-		clonEntrenador.hechizosTormenta = (ArrayList<Pokemon>)hechizosNiebla.clone();
+		clonEntrenador.hechizosTormenta = (ArrayList<Hechizo>)hechizosNiebla.clone();
 		clonEntrenador.hechizosTormenta.clear();
 		for(Hechizo hechizo : this.hechizosTormenta) {
 			clonEntrenador.hechizosTormenta.add((Hechizo)hechizosTormenta.clone());
 		}
 
-		clonEntrenador.hechizosViento = (ArrayList<Pokemon>)hechizosViento.clone();
+		clonEntrenador.hechizosViento = (ArrayList<Hechizo>)hechizosViento.clone();
 		clonEntrenador.hechizosViento.clear();
 		for(Hechizo hechizo : this.hechizosViento) {
 			clonEntrenador.hechizosViento.add((Hechizo)hechizo.clone());
 		}
 		
 		// Clonar armas
-		clonEntrenador.armas = (ArrayList<Pokemon>)armas.clone();
+		clonEntrenador.armas = (ArrayList<Arma>)armas.clone();
 		clonEntrenador.armas.clear();
 		for(Arma arma : this.armas) {
 			clonEntrenador.armas.add((Arma)arma.clone());
@@ -114,6 +114,18 @@ public class Entrenador implements Cloneable, Clasificable {
 	public void anadirPokemonCombatiente(Pokemon pokemon) {
 		if (this.pokemonesCombatientes.size()<maxCombatientes)
 			this.pokemonesCombatientes.add(pokemon);
+	}
+	
+	public void lanzarHechizoAAdversario(ArrayList<Hechizo> mazo, Pokemon adversario) {
+		if (!mazo.isEmpty()) {
+			mazo.get(0).hechizar(adversario);
+			this.quitarCartaDeHechizo(mazo);
+		}
+	}
+	
+	public void quitarCartaDeHechizo(ArrayList<Hechizo> mazo) {
+		if (!mazo.isEmpty())
+			mazo.remove(0);
 	}
 	
 	// Getters y setters

@@ -12,11 +12,13 @@ public class Espada extends Arma {
     	adversario.recibeDano(this.ataque);
 	}
 
-	@override
+	@Override
 	public Object clone() {
-	  try
-	     return (Espada)super.clone();
-	  catch (CloneNotSupportedException e)
-	     throw new AssertionError();
-
+		try {
+			return (Espada)super.clone();
+		}
+		catch (CloneNotSupportedException e) {
+	    	throw new AssertionError();
+		}
+	}
 }

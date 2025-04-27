@@ -43,10 +43,7 @@ public class Duelo {
 				case 3: cartasHechizo = entrenador.getCartasDeViento(); break;
 				default: cartasHechizo.clear(); break;
 			}
-			if (!cartasHechizo.isEmpty()) {
-				cartasHechizo.get(0).hechizar(pokemonAdversario);
-				cartasHechizo.remove(0);
-			}
+			entrenador.lanzarHechizoAAdversario(cartasHechizo, pokemonAdversario);
 		}
 	}
 	
