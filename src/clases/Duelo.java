@@ -17,11 +17,16 @@ public class Duelo {
 		this.entrenador2 = e2;
 	}
 	
-	private void seleccionaPokemon(int indice, ArrayList<Pokemon> equipo, Pokemon pokemon) {
-		do {
-			indice++;
-			pokemon = equipo.get(indice);
-		} while (indice<maxPokemon && pokemon.getVida()<=0);
+	// Devuelve el índice del primer Pokémon combatiente con salud
+	private Pokemon seleccionaPokemon(int indice, ArrayList<Pokemon> equipo) {
+		Pokemon pokemon = null;
+		
+		if (indice<equipo.size()-1)
+			do {
+				indice++;
+				pokemon = equipo.get(indice);
+			} while (indice<maxPokemon && indice<equipo.size()-1 && pokemon.getVida()<=0);
+		return pokemon;
 	}
 	
 	private void lanzarCartaDeHechizo(Entrenador entrenador, Pokemon pokemonAdversario) {
@@ -30,14 +35,14 @@ public class Duelo {
 		Scanner scanner = new Scanner(System.in);
 		
 		if (!entrenador.getHechizos().isEmpty()) {
-			System.out.println("Elija un hechizo para tirar\n");
+			System.out.println("\n"+entrenador.getNombre()+" elige un hechizo para tirar");
 			if (!entrenador.getCartasDeNiebla().isEmpty())
-				System.out.println("1 - Niebla\n");
+				System.out.println("1 - Niebla");
 			if (!entrenador.getCartasDeTormenta().isEmpty())
-				System.out.println("2 - Tormenta\n");
+				System.out.println("2 - Tormenta");
 			if (!entrenador.getCartasDeViento().isEmpty())
-				System.out.println("3 - Viento\n");
-			System.out.println("(otro) - ninguno\n");
+				System.out.println("3 - Viento");
+			System.out.println("(otro) - ninguno");
 			indiceHechizo = scanner.nextInt();
 			switch(indiceHechizo) {
 				case 1: cartasHechizo = entrenador.getCartasDeNiebla(); break;
@@ -52,10 +57,9 @@ public class Duelo {
 	public void iniciaDuelo() throws EntrenadorSinPoquemonesException {
 		ArrayList<Pokemon> equipo1 = entrenador1.getPokemonesCombatientes(),
 							equipo2 = entrenador2.getPokemonesCombatientes();
-		int indice1 = -1,
-			indice2 = -1;
-		Pokemon pokemon1 = null,
-				pokemon2 = null;		
+		int indice1, indice2;
+		Pokemon pokemon1, pokemon2;
+		
 		try {
 			// Verifica que los equipos no estén vacíos
 			if (equipo1.isEmpty())
@@ -65,15 +69,20 @@ public class Duelo {
 			
 			// Verifica que haya pokemones con salud y selecciona el primero apto de cada equipo
 			// Equipo 1
-			this.seleccionaPokemon(indice1, equipo1, pokemon1);
-			if (indice1 == maxPokemon)
-				throw new EquipoSinSaludException(entrenador1); // Acá hubo un comentario pidiendo que la línea haga lo que hace
+			pokemon1 = this.seleccionaPokemon(-1, equipo1);
+			if (pokemon1 == null)
+				throw new EquipoSinSaludException(entrenador1);
+			else
+				indice1 = equipo1.indexOf(pokemon1);
 			// Equipo 2
-			this.seleccionaPokemon(indice2, equipo2, pokemon2);
-			if (indice2 == maxPokemon)
-				throw new EquipoSinSaludException(entrenador2);	// Acá hubo un comentario simil al de arriba		
+			pokemon2 = this.seleccionaPokemon(-1, equipo2);
+			if (pokemon2 == null)
+				throw new EquipoSinSaludException(entrenador2);
+			else
+				indice2 = equipo2.indexOf(pokemon2);		
 			// Duelo
 			while (indice1<maxPokemon && indice2<maxPokemon) {
+				System.out.println(pokemon1.getNombre()+" VS "+pokemon2.getNombre());
 				this.lanzarCartaDeHechizo(entrenador1, pokemon2); // Hechizo 1 a 2
 				this.lanzarCartaDeHechizo(entrenador2, pokemon1); // Hechizo 2 a 1
 				// Las pokepiñas en cuestión
@@ -88,10 +97,13 @@ public class Duelo {
 				else
 					pokemon2.setXP(pokemon2.getCategoria()+1);
 				// El recambio
-				if (pokemon1.getVida()<=0)
-					this.seleccionaPokemon(indice1, equipo1, pokemon1);
-				else
-					this.seleccionaPokemon(indice2, equipo2, pokemon2);
+				if (pokemon1.getVida()<=0) {
+					pokemon1 = this.seleccionaPokemon(indice1, equipo1);
+					indice1 = (pokemon1 != null) ? equipo1.indexOf(pokemon1) : maxPokemon;
+				} else {
+					pokemon2 = this.seleccionaPokemon(indice2, equipo2);
+					indice2 = (pokemon2 != null) ? equipo2.indexOf(pokemon2) : maxPokemon;
+				}
 			}
 			if (indice1<maxPokemon)
 				entrenador1.setCreditos(entrenador1.getCreditos()+500);

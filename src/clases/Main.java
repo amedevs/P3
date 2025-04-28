@@ -67,11 +67,13 @@ public class Main {
             brock.anadirPokemonCombatiente(geodude);
             
             // Probar clonación
+            /*
             System.out.println("Probando clonación...");
-            Entrenador ashClon = (Entrenador)ash.clone();
-            System.out.println("Ash clonado: " + ashClon.getNombre());
-            System.out.println("Pokémones de Ash clon: " + ashClon.getPokemones().size());
-            
+            System.out.println(brock.getPokemones());
+            Entrenador brockClon = (Entrenador)brock.clone();
+            System.out.println("Ash clonado: " + brockClon.getNombre());
+            System.out.println("Pokémones de Ash clon: " + brockClon.getPokemones().size());
+            */
             // Iniciar duelo
             System.out.println("\nIniciando duelo...");
             Duelo duelo = new Duelo(ash, brock);
@@ -84,9 +86,9 @@ public class Main {
             System.out.println("Categoría de Ash: " + ash.getCategoria());
             System.out.println("Categoría de Brock: " + brock.getCategoria());
             
-        } catch (CloneNotSupportedException e) {
+        } /*catch (CloneNotSupportedException e) {
             System.out.println("Error al clonar: " + e.getMessage());
-        } catch (Exception e) {
+        }*/ catch (Exception e) {
             System.out.println("Error general: " + e.getMessage());
         }
     }
