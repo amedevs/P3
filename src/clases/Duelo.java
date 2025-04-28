@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import clases.hechizo.Hechizo;
 import clases.pokemon.Pokemon;
+import excepciones.EntrenadorSinPoquemonesException;
+import excepciones.EquipoSinSaludException;
 
 public class Duelo {
 	private final int maxPokemon = 3;
@@ -47,7 +49,7 @@ public class Duelo {
 		}
 	}
 	
-	public void iniciaDuelo() {
+	public void iniciaDuelo() throws EntrenadorSinPoquemonesException {
 		ArrayList<Pokemon> equipo1 = entrenador1.getPokemonesCombatientes(),
 							equipo2 = entrenador2.getPokemonesCombatientes();
 		int indice1 = -1,
@@ -57,17 +59,19 @@ public class Duelo {
 		try {
 			// Verifica que los equipos no estén vacíos
 			if (equipo1.isEmpty())
-				System.out.println("Equipo 1 vacío"); // Lanzar excepción EquipoVacioException (o un nombre así xd)
+				throw new EntrenadorSinPoquemonesException(entrenador1); // Acá hubo un comentario pidiendo que la línea haga lo que hace
 			if (equipo2.isEmpty())
-				System.out.println("Equipo 2 vacío"); // Lanzar excepción EquipoVacioException (o un nombre así xd)
+				throw new EntrenadorSinPoquemonesException(entrenador2); // Acá hubo un comentario simil al de arriba
 			
 			// Verifica que haya pokemones con salud y selecciona el primero apto de cada equipo
-			this.seleccionaPokemon(indice1, equipo1, pokemon1); // 1
-			// if (indice1 == maxPokemon)
-			//	   Lanzar excepción EquipoSinSaludException (o un nombre así xd)
-			this.seleccionaPokemon(indice2, equipo2, pokemon2); // 2
-			// if (indice2 == maxPokemon)
-			//     Lanzar excepción EquipoSinSaludException (o un nombre así xd)			
+			// Equipo 1
+			this.seleccionaPokemon(indice1, equipo1, pokemon1);
+			if (indice1 == maxPokemon)
+				throw new EquipoSinSaludException(entrenador1); // Acá hubo un comentario pidiendo que la línea haga lo que hace
+			// Equipo 2
+			this.seleccionaPokemon(indice2, equipo2, pokemon2);
+			if (indice2 == maxPokemon)
+				throw new EquipoSinSaludException(entrenador2);	// Acá hubo un comentario simil al de arriba		
 			// Duelo
 			while (indice1<maxPokemon && indice2<maxPokemon) {
 				this.lanzarCartaDeHechizo(entrenador1, pokemon2); // Hechizo 1 a 2
@@ -95,7 +99,7 @@ public class Duelo {
 				entrenador2.setCreditos(entrenador2.getCreditos()+500);
 		}
 		catch(Exception e) {
-			// Manejo
+			System.out.println(e.getMessage());
 		}
 	}
 }

@@ -6,6 +6,7 @@ import clases.arma.Arma;
 import clases.hechizo.Hechizo;
 import clases.pokemon.Piedra;
 import clases.pokemon.Pokemon;
+import excepciones.CompraImposibleException;
 import interfaces.Clasificable;
 
 public class Entrenador implements Cloneable, Clasificable {
@@ -83,36 +84,42 @@ public class Entrenador implements Cloneable, Clasificable {
 	
 	// Métodos -----------------------------------------------------
 	public void anadirPokemon(Pokemon pokemon) {
-		this.pokemones.add(pokemon);
+		if (!this.pokemones.contains(pokemon))
+			this.pokemones.add(pokemon);
 	}
 	
-	public void comprarPokemon(Pokemon pokemon) {
+	public void comprarPokemon(Pokemon pokemon) throws CompraImposibleException {
 		if (this.creditos>=pokemon.getCosto()) {
 			this.creditos -= pokemon.getCosto();
 			this.pokemones.add(pokemon);
-		} /*else
-			lanzar CompraImposibleException */
+		} else
+			throw new CompraImposibleException(this.creditos,pokemon.getCosto());
 	}
 	
-	public void comprarArma(Arma arma) {
+	public void comprarArma(Arma arma) throws CompraImposibleException {
 		if (this.creditos>=arma.getCosto()) {
 			this.creditos -= arma.getCosto();
 			this.armas.add(arma);
-		} /*else
-			lanzar CompraImposibleException */
+		} else
+			throw new CompraImposibleException(this.creditos,arma.getCosto());
 	}
 	
 	public void asignarArma(Arma arma, Piedra piedra) {
-		piedra.setArma(arma);
-		this.armas.remove(arma);
+		if (this.pokemones.contains(piedra) && this.armas.contains(arma)) {
+			piedra.setArma(arma);
+			this.armas.remove(arma);
+	
+		}
 	}
 	public void desasignarArma(Piedra piedra) {
-		this.armas.add(piedra.getArma());
-		piedra.setArma(null);
+		if (this.pokemones.contains(piedra) && piedra.getArma()!=null) {
+			this.armas.add(piedra.getArma());
+			piedra.setArma(null);
+		}
 	}
 
 	public void anadirPokemonCombatiente(Pokemon pokemon) {
-		if (this.pokemonesCombatientes.size()<maxCombatientes)
+		if (this.pokemonesCombatientes.size()<maxCombatientes && !this.pokemonesCombatientes.contains(pokemon) && this.pokemones.contains(pokemon))
 			this.pokemonesCombatientes.add(pokemon);
 	}
 	
