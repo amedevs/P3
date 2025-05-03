@@ -164,16 +164,16 @@ public class Duelo {
                     pokemon1 = this.seleccionaPokemon(indice1, equipo1);
                     indice1 = (pokemon1 != null) ? equipo1.indexOf(pokemon1) : maxPokemon;
                     if (pokemon1 != null)
-                        System.out.println(entrenador1.getNombre() + " envía a " + pokemon1.getNombre() + " al combate.");
+                        System.out.println("\ n " entrenador1.getNombre() + " envía a " + pokemon1.getNombre() + " al combate.");
                     else
-                        System.out.println(entrenador1.getNombre() + " se ha quedado sin Pokémon disponibles.");
+                        System.out.println("\ n "entrenador1.getNombre() + " se ha quedado sin Pokémon disponibles.");
                 } else {
                     pokemon2 = this.seleccionaPokemon(indice2, equipo2);
                     indice2 = (pokemon2 != null) ? equipo2.indexOf(pokemon2) : maxPokemon;
                     if (pokemon2 != null)
-                        System.out.println(entrenador2.getNombre() + " envía a " + pokemon2.getNombre() + " al combate.");
+                        System.out.println("\ n "entrenador2.getNombre() + " envía a " + pokemon2.getNombre() + " al combate.");
                     else
-                        System.out.println(entrenador2.getNombre() + " se ha quedado sin Pokémon disponibles.");
+                        System.out.println("\ n "entrenador2.getNombre() + " se ha quedado sin Pokémon disponibles.");
                 }
                 System.out.println("--------------------------------------------------");
             }
@@ -192,7 +192,7 @@ public class Duelo {
             System.out.println("Créditos de " + entrenador2.getNombre() + ": " + entrenador2.getCreditos());
         }
         catch(Exception e) {
-            System.out.println("❗ Error durante el combate: " + e.getMessage());
+            System.out.println("\ n ❗ Error durante el combate: " + e.getMessage());
         }
     }
 
