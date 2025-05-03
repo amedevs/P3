@@ -15,9 +15,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	private String nombre;
 	private ArrayList<Pokemon> pokemones = new ArrayList<Pokemon>();
 	private ArrayList<Pokemon> pokemonesCombatientes = new ArrayList<Pokemon>();
-	private ArrayList<Hechizo> hechizosNiebla = new ArrayList<Hechizo>();
-	private ArrayList<Hechizo> hechizosTormenta = new ArrayList<Hechizo>();
-	private ArrayList<Hechizo> hechizosViento = new ArrayList<Hechizo>();
+	private ArrayList<Hechizo> hechizos = new ArrayList<Hechizo>();
 	private ArrayList<Arma> armas = new ArrayList<Arma>();
 
 	private int creditos = 0;
@@ -45,22 +43,10 @@ public class Entrenador implements Cloneable, Clasificable {
 		}
 		
 		// Clonar hechizos
-		clonEntrenador.hechizosNiebla = (ArrayList<Hechizo>)hechizosNiebla.clone();
-		clonEntrenador.hechizosNiebla.clear();
-		for(Hechizo hechizo : this.hechizosNiebla) {
-			clonEntrenador.hechizosNiebla.add((Hechizo)hechizo.clone());
-		}
-
-		clonEntrenador.hechizosTormenta = (ArrayList<Hechizo>)hechizosNiebla.clone();
-		clonEntrenador.hechizosTormenta.clear();
-		for(Hechizo hechizo : this.hechizosTormenta) {
-			clonEntrenador.hechizosTormenta.add((Hechizo)hechizosTormenta.clone());
-		}
-
-		clonEntrenador.hechizosViento = (ArrayList<Hechizo>)hechizosViento.clone();
-		clonEntrenador.hechizosViento.clear();
-		for(Hechizo hechizo : this.hechizosViento) {
-			clonEntrenador.hechizosViento.add((Hechizo)hechizo.clone());
+		clonEntrenador.hechizos = (ArrayList<Hechizo>) hechizos.clone();
+		clonEntrenador.hechizos.clear();
+		for(Hechizo hechizo : this.hechizos) {
+			clonEntrenador.hechizos.add(hechizo);
 		}
 		
 		// Clonar armas
@@ -83,15 +69,12 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	
 	// Métodos -----------------------------------------------------
-	public void anadirPokemon(Pokemon pokemon) {
-		if (!this.pokemones.contains(pokemon))
-			this.pokemones.add(pokemon);
-	}
-	
 	public void comprarPokemon(Pokemon pokemon) throws CompraImposibleException {
 		if (this.creditos>=pokemon.getCosto()) {
-			this.creditos -= pokemon.getCosto();
-			this.pokemones.add(pokemon);
+			if (!this.pokemones.contains(pokemon)) {
+				this.creditos -= pokemon.getCosto();
+				this.pokemones.add(pokemon);
+			}
 		} else
 			throw new CompraImposibleException(this.creditos,pokemon.getCosto());
 	}
@@ -107,8 +90,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	public void asignarArma(Arma arma, Piedra piedra) {
 		if (this.pokemones.contains(piedra) && this.armas.contains(arma)) {
 			piedra.setArma(arma);
-			this.armas.remove(arma);
-	
+			this.armas.remove(arma);	
 		}
 	}
 	public void desasignarArma(Piedra piedra) {
@@ -119,20 +101,28 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 
 	public void anadirPokemonCombatiente(Pokemon pokemon) {
-		if (this.pokemonesCombatientes.size()<maxCombatientes && !this.pokemonesCombatientes.contains(pokemon) && this.pokemones.contains(pokemon))
+		if (this.pokemonesCombatientes.size()<maxCombatientes &&
+			this.pokemones.contains(pokemon) &&
+			!this.pokemonesCombatientes.contains(pokemon)
+		)
 			this.pokemonesCombatientes.add(pokemon);
 	}
 	
-	public void lanzarHechizoAAdversario(ArrayList<Hechizo> mazo, Pokemon adversario) {
-		if (!mazo.isEmpty()) {
-			mazo.get(0).hechizar(adversario);
-			this.quitarCartaDeHechizo(mazo);
+	// Métodos para manejar hechizos
+	public ArrayList<Hechizo> getHechizosPorTipo(Hechizo.TipoHechizo tipo) {
+		ArrayList<Hechizo> filtrados = new ArrayList<>();
+		filtrados.clear();
+		for (Hechizo h : hechizos) {
+			if (h.getTipo() == tipo) filtrados.add(h);
 		}
+		return filtrados;
 	}
 	
-	public void quitarCartaDeHechizo(ArrayList<Hechizo> mazo) {
-		if (!mazo.isEmpty())
-			mazo.remove(0);
+	public void lanzarHechizoAAdversario(Hechizo carta, Pokemon adversario) {
+		if (this.hechizos.contains(carta)) {
+			carta.hechizar(adversario);
+			this.hechizos.remove(carta);
+		}
 	}
 	
 	// Getters y setters
@@ -148,21 +138,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	
 	public ArrayList<Hechizo> getHechizos() {
-		ArrayList<Hechizo> hechizos = new ArrayList<Hechizo>();
-		hechizos.addAll(this.hechizosNiebla);
-		hechizos.addAll(this.hechizosTormenta);
-		hechizos.addAll(this.hechizosViento);
-		
-		return hechizos;
-	}
-	public ArrayList<Hechizo> getCartasDeNiebla() {
-		return this.hechizosNiebla;
-	}
-	public ArrayList<Hechizo> getCartasDeTormenta() {
-		return this.hechizosTormenta;
-	}
-	public ArrayList<Hechizo> getCartasDeViento() {
-		return this.hechizosViento;
+		return this.hechizos;
 	}
 	
 	public int getCreditos() {
@@ -172,6 +148,3 @@ public class Entrenador implements Cloneable, Clasificable {
 		this.creditos = nuevosCreditos;
 	}
 }
-
-
-

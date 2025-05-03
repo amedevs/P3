@@ -4,7 +4,9 @@ import interfaces.Hechizable;
 
 public class Tormenta extends Hechizo {
 	
-	public Tormenta() {}
+	public Tormenta() {
+		super(TipoHechizo.TORMENTA);
+	}
 	
 	@Override
 	public void hechizar(Hechizable hechizado) {
