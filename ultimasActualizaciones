@@ -1,3 +1,3 @@
-- Cambio en la lógica del lanzamiento de hechizos. Ahora cada entrenador administra su mazo y es Duelo quien le da la orden.
-- Santi: cambié la sintaxis de tus clonaciones. Estaban bien pero, escritas así, no compilaban en mi Eclipse.
-- Agregué clonaciones en Hechizo.
+- Cambio en la administración de hechizos.
+- Ahora Duelo cuenta con textos descriptivos (elegidos al azar) del combate.
+- Clase Mundo.
