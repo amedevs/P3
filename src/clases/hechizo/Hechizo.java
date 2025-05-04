@@ -2,7 +2,7 @@ package clases.hechizo;
 
 import interfaces.Hechizable;
 
-public abstract class Hechizo implements Cloneable {
+public abstract class Hechizo {
     public enum TipoHechizo { NIEBLA, TORMENTA, VIENTO }
     private final TipoHechizo tipo;
 
