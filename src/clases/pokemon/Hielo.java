@@ -43,7 +43,7 @@ public class Hielo extends Pokemon {
     	this.setVida(this.getVida()+200);
 	}
 
-	/**Metodo que se encarga de clonar al pokemon agua<br>
+	/**Metodo que se encarga de clonar al pokemon Hielo<br>
 	 * 
 	 * Genera un clon de pokemon Hielo (siempre es clonable)<br>
 	 * @return Devuelve el clon del pokemon
