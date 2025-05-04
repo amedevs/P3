@@ -20,11 +20,23 @@ public class Entrenador implements Cloneable, Clasificable {
 
 	private int creditos = 0;
 	
+	// Constructor --------------------------------------------------------
 	public Entrenador(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	// "Heredaciones" -----------------------------------------------------
+	// "Herencias" -----------------------------------------------------
+	/**Metodo que se encarga de clonar al entrenador<br>
+	 * 
+	 * Genera un clon del entrenador <br>
+	 * Clona los Pokemons que posee <br>
+	 * Clona los Pokemons que estan selecionados para batalla <br>
+	 * Clona los hechizoz que tiene y <br>
+	 * CLona las armas que dispone el entrenador.
+	 *
+	 * @return Devuelve el clon completo del entrenador.
+	 * @throws CloneNotSupportedException 
+	 */
 	public Object clone() throws CloneNotSupportedException {
 		Entrenador clonEntrenador = (Entrenador)super.clone();
 		
@@ -69,6 +81,13 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	
 	// Métodos -----------------------------------------------------
+	/**Metodo para la adquisicion de un poquemon<br>
+	 * 
+	 * <b>Precondicion:</b> El parametro pokemon debe ser distinto de null
+	 * 
+	 * @param pokemon Pokemon que se desea comprar
+	 * @throws CompraImposibleException Se lanza cuando el entrenador no tiene los creditos suficientes para comprar al pokemon
+	 */
 	public void comprarPokemon(Pokemon pokemon) throws CompraImposibleException {
 		if (this.creditos>=pokemon.getCosto()) {
 			if (!this.pokemones.contains(pokemon)) {
@@ -78,7 +97,13 @@ public class Entrenador implements Cloneable, Clasificable {
 		} else
 			throw new CompraImposibleException(this.creditos,pokemon.getCosto());
 	}
-	
+	/**Metodo para la adquisicion de un arma<br>
+	 * 
+	 * <b>Precondicion:</b> El parametro arma debe ser distinto de null
+	 * 
+	 * @param arma Arma que se desea comprar
+	 * @throws CompraImposibleException Se lanza cuando el entrenador no tiene los creditos suficientes para comprar el arma
+	 */
 	public void comprarArma(Arma arma) throws CompraImposibleException {
 		if (this.creditos>=arma.getCosto()) {
 			this.creditos -= arma.getCosto();
@@ -87,12 +112,25 @@ public class Entrenador implements Cloneable, Clasificable {
 			throw new CompraImposibleException(this.creditos,arma.getCosto());
 	}
 	
+	/**Metodo para otorgar un arma a un Pokemon
+	 * 
+	 * <b>Precondiciones:</b> 
+	 *		El parametro piedra debe ser distinto de null<br>
+	 *		El parametro arma debe ser distinto de null
+	 * 
+	 * @param arma Arma que se desea asignar
+	 * @param piedra Pokemon de tipo piedra al que se le quiere dar el arma
+	 */
 	public void asignarArma(Arma arma, Piedra piedra) {
 		if (this.pokemones.contains(piedra) && this.armas.contains(arma)) {
 			piedra.setArma(arma);
 			this.armas.remove(arma);	
 		}
 	}
+	/**Metodo para quitar un arma a un Pokemon
+	 * <b>Precondicion:</b> El parametro piedra debe ser distinto de null
+	 * @param piedra Pokemon de tipo piedra al que se le quiere quitar el arma
+	 */
 	public void desasignarArma(Piedra piedra) {
 		if (this.pokemones.contains(piedra) && piedra.getArma()!=null) {
 			this.armas.add(piedra.getArma());
@@ -100,6 +138,10 @@ public class Entrenador implements Cloneable, Clasificable {
 		}
 	}
 
+	/**Metodo para generar equipo de batalla de pokemons
+	 * 
+	 * @param pokemon Pokemon que se quiere usar para combatir
+	 */
 	public void anadirPokemonCombatiente(Pokemon pokemon) {
 		if (this.pokemonesCombatientes.size()<maxCombatientes &&
 			this.pokemones.contains(pokemon) &&
@@ -109,6 +151,11 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	
 	// Métodos para manejar hechizos
+	/**Metodo para manejar hechizos
+	 * 
+	 * @param tipo Tipo del hechizo
+	 * @return devuelve un arreglo con los hechizos del mismo tipo
+	 */
 	public ArrayList<Hechizo> getHechizosPorTipo(Hechizo.TipoHechizo tipo) {
 		ArrayList<Hechizo> filtrados = new ArrayList<>();
 		filtrados.clear();
@@ -118,6 +165,11 @@ public class Entrenador implements Cloneable, Clasificable {
 		return filtrados;
 	}
 	
+	/**Metodo para utilizar los hechizos
+	 * 
+	 * @param carta Hechizo seleccionado para atacar
+	 * @param adversario Pokemon del equipo contrario, que recibira el hechizo
+	 */
 	public void lanzarHechizoAAdversario(Hechizo carta, Pokemon adversario) {
 		if (this.hechizos.contains(carta)) {
 			carta.hechizar(adversario);
