@@ -14,11 +14,11 @@ public class Espada extends Arma {
 
 	@Override
 	public Object clone() {
+		Espada e = null;
 		try {
-			return (Espada)super.clone();
+			e = (Espada)super.clone();
 		}
-		catch (CloneNotSupportedException e) {
-	    	throw new AssertionError();
-		}
+		catch (CloneNotSupportedException exc) {}
+		return e;
 	}
 }
