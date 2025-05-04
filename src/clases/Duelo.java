@@ -360,20 +360,15 @@ public class Duelo {
 	 */
 	private void realizarEnfrentamiento(Pokemon pokemon1, Pokemon pokemon2) {
 		int turnos = 0;
-		boolean combateTerminado = false;
-
-		while (pokemon1.getVida() > 0 && pokemon2.getVida() > 0 && !combateTerminado) {
+		boolean mostrarMensajes;
+		
+		while (pokemon1.getVida() > 0 && pokemon2.getVida() > 0) {
 			turnos++;
-			boolean mostrarMensajes = (turnos % 5 == 0);
+			mostrarMensajes = (turnos % 5 == 0);
 			
 			realizarTurnoAtaque(pokemon1, pokemon2, mostrarMensajes);
-			if (pokemon2.getVida() <= 0) {
-				combateTerminado = true;
-			} else {
+			if (pokemon2.getVida() > 0) {
 				realizarTurnoAtaque(pokemon2, pokemon1, mostrarMensajes);
-				if (pokemon1.getVida() <= 0) {
-					combateTerminado = true;
-				}
 			}
 		}
 	}
