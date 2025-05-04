@@ -65,8 +65,6 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Cloneab
 	/**Metodo que se encarga de clonar al Pokemon<br>
 	 * 
 	 * Genera un clon del Pokemon <br>
-	 * Clona los Pokemones que posee <br>
-
 	 * @return Devuelve el clon del pokemon.
 	 * @throws CloneNotSupportedException 
 	 */
