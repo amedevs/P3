@@ -15,9 +15,6 @@ public abstract class Arma implements Hostil, Valuable, Cloneable {
 	public double getAtaque() {
     	return ataque;
 	}
-	public void setAtaque(double ataque) {
-    	this.ataque = ataque;
-	}
 
 	public double getCosto() {
     	return costo;
