@@ -62,6 +62,14 @@ public abstract class Pokemon implements Hostil, Valuable, Clasificable, Cloneab
     	this.vida = vida;
 	}
 
+	/**Metodo que se encarga de clonar al Pokemon<br>
+	 * 
+	 * Genera un clon del Pokemon <br>
+	 * Clona los Pokemones que posee <br>
+
+	 * @return Devuelve el clon del pokemon.
+	 * @throws CloneNotSupportedException 
+	 */
 	@Override
 	public Object clone() throws CloneNotSupportedException {
           return (Pokemon)super.clone();
