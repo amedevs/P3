@@ -9,6 +9,13 @@ import clases.pokemon.Pokemon;
 import excepciones.CompraImposibleException;
 import interfaces.Clasificable;
 
+/**
+ * Clase que representa a un entrenador de Pokémon, capaz de clonarse y ser clasificado.
+ * Implementa las interfaces Cloneable y Clasificable.
+ * 
+ * @author Sistema de Combate Pokémon
+ * @version 1.0
+ */
 public class Entrenador implements Cloneable, Clasificable {
 	private final int maxCombatientes = 3;
 	
