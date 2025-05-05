@@ -271,7 +271,7 @@ public class Duelo {
 	 * @throws EntrenadorSinPoquemonesException Si algún entrenador no tiene Pokémon
 	 * @throws EquipoSinSaludException Si ningún Pokémon tiene vida disponible
 	 */
-	public void iniciaDuelo() throws EntrenadorSinPoquemonesException {
+	public void iniciaDuelo() throws EntrenadorSinPoquemonesException, EquipoSinSaludException {
 		ArrayList<Pokemon> equipo1 = entrenador1.getPokemonesCombatientes();
 		ArrayList<Pokemon> equipo2 = entrenador2.getPokemonesCombatientes();
 		
