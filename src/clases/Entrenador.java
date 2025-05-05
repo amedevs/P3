@@ -83,7 +83,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	// Métodos -----------------------------------------------------
 	/**Metodo para la adquisicion de un poquemon<br>
 	 * 
-	 * <b>Precondicion:</b> El parametro pokemon debe ser distinto de null
+	 * <br>Precondicion:</br> El parametro pokemon debe ser distinto de null
 	 * 
 	 * @param pokemon Pokemon que se desea comprar
 	 * @throws CompraImposibleException Se lanza cuando el entrenador no tiene los creditos suficientes para comprar al pokemon
@@ -99,7 +99,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	/**Metodo para la adquisicion de un arma<br>
 	 * 
-	 * <b>Precondicion:</b> El parametro arma debe ser distinto de null
+	 * <br>Precondicion:</br> El parametro arma debe ser distinto de null
 	 * 
 	 * @param arma Arma que se desea comprar
 	 * @throws CompraImposibleException Se lanza cuando el entrenador no tiene los creditos suficientes para comprar el arma
@@ -114,7 +114,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	
 	/**Metodo para otorgar un arma a un Pokemon
 	 * 
-	 * <b>Precondiciones:</b> 
+	 * <br>Precondiciones:</br> 
 	 *		El parametro piedra debe ser distinto de null<br>
 	 *		El parametro arma debe ser distinto de null
 	 * 
@@ -128,7 +128,7 @@ public class Entrenador implements Cloneable, Clasificable {
 		}
 	}
 	/**Metodo para quitar un arma a un Pokemon
-	 * <b>Precondicion:</b> El parametro piedra debe ser distinto de null
+	 * <br>Precondicion:</br> El parametro piedra debe ser distinto de null
 	 * @param piedra Pokemon de tipo piedra al que se le quiere quitar el arma
 	 */
 	public void desasignarArma(Piedra piedra) {
@@ -148,6 +148,14 @@ public class Entrenador implements Cloneable, Clasificable {
 			!this.pokemonesCombatientes.contains(pokemon)
 		)
 			this.pokemonesCombatientes.add(pokemon);
+	}
+
+	/**Metodo para quitar pokemon del equipo de batalla
+	 * 
+	 * @param pokemon Pokemon que se quiere quitar
+	 */
+	public void quitarPokemonCombatiente(Pokemon pokemon) {
+		this.pokemonesCombatientes.remove(pokemon);
 	}
 	
 	// Métodos para manejar hechizos
