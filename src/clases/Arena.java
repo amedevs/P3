@@ -6,8 +6,12 @@ public abstract class Arena {
         this.nombre = nombre;
         this.premioBase = premioBase;
     }
-    public String getNombre() { return nombre; }
-    public int getPremioBase() { return premioBase; }
+    public String getNombre() { 
+        return nombre;
+    }
+    public int getPremioBase() { 
+        return premioBase; 
+    }
 
     // Método que retorna el premio REAL según dificultad
     public abstract int getPremio();  
