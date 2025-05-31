@@ -24,6 +24,7 @@ public class Entrenador implements Cloneable, Clasificable {
 	private ArrayList<Pokemon> pokemonesCombatientes = new ArrayList<Pokemon>();
 	private ArrayList<Hechizo> hechizos = new ArrayList<Hechizo>();
 	private ArrayList<Arma> armas = new ArrayList<Arma>();
+	private int posicionTorneo = -1; 
 
 	private int creditos = 0;
 	
@@ -213,5 +214,12 @@ public class Entrenador implements Cloneable, Clasificable {
 	}
 	public void setCreditos(int nuevosCreditos) {
 		this.creditos = nuevosCreditos;
+	}
+
+	public void setPosicionTorneo(int posicion){
+	       this  posicionTorneo = posicion; 
+	}
+	public int getPosicionTorneo(){
+	       return this.posicionTorneo; 
 	}
 }
