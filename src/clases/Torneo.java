@@ -105,7 +105,7 @@ public class Torneo {
      *   1) solicita una arena al ArenaManager,
      *   2) decora la arena con dificultad aleatoria,
      *   3) crea un objeto Duelo(e1, equipo1, e2, equipo2, arenaDecorada),
-     *   4) registra un Observer (p. ej. la GUI) si lo deseas,
+     *   4) registra un Observer (p. ej. la GUI),
      *   5) ejecuta duelo.run(),
      *   6) libera la arena al terminar.
      * - Luego hace join() sobre todos los hilos para esperar a que terminen.
@@ -115,12 +115,9 @@ public class Torneo {
      */
     private void ejecutarRonda(List<Entrenador> participantes, String nombreRonda) {
         System.out.println("▶ Iniciando ronda: " + nombreRonda);
+       // Array de hilos para el control de rondas
         List<Thread> hilos = new ArrayList<>();
 
-        // Asegurar que la lista tenga tamaño par
-        if (participantes.size() % 2 != 0) {
-            throw new IllegalStateException("La lista de participantes debe ser un número par.");
-        }
 
         for (int i = 0; i < participantes.size(); i += 2) {
             Entrenador e1 = participantes.get(i);
